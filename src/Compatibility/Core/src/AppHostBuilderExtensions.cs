@@ -60,11 +60,14 @@ namespace Microsoft.Maui.Controls.Hosting
 			DependencyService.Register<Xaml.ResourcesLoader>();
 			DependencyService.Register<NativeBindingService>();
 			DependencyService.Register<NativeValueConverterService>();
-			DependencyService.Register<ResourcesProvider>();
 			DependencyService.Register<Xaml.ValueConverterProvider>();
 			DependencyService.Register<PlatformInvalidate>();
-			DependencyService.Register<FontNamedSizeService>();
 			DependencyService.Register<PlatformSizeService>();
+
+#pragma warning disable CS0612 // Type or member is obsolete
+			DependencyService.Register<ResourcesProvider>();
+			DependencyService.Register<FontNamedSizeService>();
+#pragma warning restore CS0612 // Type or member is obsolete
 #endif
 
 			builder.ConfigureCompatibilityLifecycleEvents();
