@@ -46,7 +46,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 				Content = _listView;
 
-				Device.StartTimer(TimeSpan.FromSeconds(5), () => { _listView.IsRefreshing = false; return false; });
+				Dispatcher.DispatchDelayed(TimeSpan.FromSeconds(5), () => _listView.IsRefreshing = false);
 			}
 		}
 

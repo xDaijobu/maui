@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -33,19 +34,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var rotate = new Button { Text = "Rotate Button" };
 			var transparent = new Button { Text = "Transparent Button" };
 			string fontName;
-			switch (Device.RuntimePlatform)
-			{
-				default:
-				case Device.iOS:
-					fontName = "Georgia";
-					break;
-				case Device.Android:
-					fontName = "sans-serif-light";
-					break;
-				case Device.WinUI:
-					fontName = "Comic Sans MS";
-					break;
-			}
+			if (DeviceInfo.Platform == DevicePlatform.Android)
+				fontName = "sans-serif-light";
+			else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+				fontName = "Comic Sans MS";
+			else
+				fontName = "Georgia";
 
 			var themedButton = new Button
 			{

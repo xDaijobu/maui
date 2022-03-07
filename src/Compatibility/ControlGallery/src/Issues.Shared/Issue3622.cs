@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Essentials;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -143,16 +144,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			};
 			listView.ItemSelected += OnItemSelected;
 
-			Thickness padding;
-			switch (Device.RuntimePlatform)
-			{
-				case Device.iOS:
-					padding = new Thickness(0, 40, 0, 0);
-					break;
-				default:
-					padding = new Thickness();
-					break;
-			}
+			Thickness padding = DeviceInfo.Platform == DevicePlatform.iOS
+				? new Thickness(0, 40, 0, 0)
+				: new Thickness();
 
 			Padding = padding;
 			Content = new StackLayout

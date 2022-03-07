@@ -128,7 +128,7 @@ namespace Microsoft.Maui.Controls
 		}
 
 		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='StartTimer']/Docs" />
-		[Obsolete("Use BindableObject.Dispatcher.StartTimer() instead.")]
+		[Obsolete("Use BindableObject.Dispatcher.StartTimer() or BindableObject.Dispatcher.DispatchDelayed() instead.")]
 		public static void StartTimer(TimeSpan interval, Func<bool> callback)
 		{
 			_ = callback ?? throw new ArgumentNullException(nameof(callback));

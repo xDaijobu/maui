@@ -17,7 +17,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 #if APP
 			InitializeComponent();
-			Device.BeginInvokeOnMainThread(OnAppearing);
+			Dispatcher.Dispatch(OnAppearing);
 #endif
 		}
 

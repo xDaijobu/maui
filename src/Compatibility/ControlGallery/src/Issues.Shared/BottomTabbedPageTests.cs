@@ -8,6 +8,7 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
+using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Graphics;
 
@@ -169,7 +170,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 								Children.Insert(1, new ContentPage(){ IconImageSource = "bank.png" });
 								Children.Insert(1, new ContentPage(){ IconImageSource = "bank.png" });
 								int i = 0;
-								Device.StartTimer(TimeSpan.FromSeconds(3), () =>
+								Dispatcher.StartTimer(TimeSpan.FromSeconds(3), () =>
 								{
 									if(i == 0)
 									{

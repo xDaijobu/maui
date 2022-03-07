@@ -143,8 +143,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var firstGroup = groups.First();
 			var firstItem = firstGroup.First();
 
-			Device.StartTimer(TimeSpan.FromSeconds(1), () => { listView.ScrollTo(lastItem, lastGroup, ScrollToPosition.End, true); return false; });
-			Device.StartTimer(TimeSpan.FromSeconds(2), () => { listView.ScrollTo(firstItem, firstItem, ScrollToPosition.MakeVisible, true); return false; });
+			Dispatcher.DispatchDelayed(TimeSpan.FromSeconds(1), () => listView.ScrollTo(lastItem, lastGroup, ScrollToPosition.End, true));
+			Dispatcher.DispatchDelayed(TimeSpan.FromSeconds(2), () => listView.ScrollTo(firstItem, firstItem, ScrollToPosition.MakeVisible, true));
 
 			_TestNumber++;
 		}

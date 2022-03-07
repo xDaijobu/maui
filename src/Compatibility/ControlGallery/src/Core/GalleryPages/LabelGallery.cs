@@ -79,19 +79,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			bolditalic.FontAttributes = FontAttributes.Bold | FontAttributes.Italic;
 
 			string fontName;
-			switch (Device.RuntimePlatform)
-			{
-				default:
-				case Device.iOS:
-					fontName = "Georgia";
-					break;
-				case Device.Android:
-					fontName = "sans-serif-light";
-					break;
-				case Device.WinUI:
-					fontName = "Comic Sans MS";
-					break;
-			}
+			if (DeviceInfo.Platform == DevicePlatform.Android)
+				fontName = "sans-serif-thin";
+			else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+				fontName = "Comic Sans MS";
+			else
+				fontName = "Georgia";
 
 			customFont.FontFamily = fontName;
 			customFont.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));

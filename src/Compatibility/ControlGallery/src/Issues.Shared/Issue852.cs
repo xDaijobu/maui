@@ -61,14 +61,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			if (!(await AttemptLogin())) //try to log in, if login fails show login screen
 			{
-				Device.BeginInvokeOnMainThread(() => BuildLogin());
+				await Dispatcher.DispatchAsync(() => BuildLogin());
 			}
 			else
 			{
 				Navigation.PopModalAsync();
 			}
-			IsBusy = false;
 
+			IsBusy = false;
 		}
 
 		void BuildLogin()

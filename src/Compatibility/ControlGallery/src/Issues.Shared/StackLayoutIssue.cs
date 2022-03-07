@@ -31,12 +31,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
-			switch (Device.RuntimePlatform)
+			if (DeviceInfo.Platform == DevicePlatform.iOS)
 			{
-				case Device.iOS:
-					winPrizeLabel.FontFamily = "HelveticaNeue-UltraLight";
-					winPrizeLabel.FontSize = Device.GetNamedSize(NamedSize.Large, winPrizeLabel);
-					break;
+				winPrizeLabel.FontFamily = "HelveticaNeue-UltraLight";
+				winPrizeLabel.FontSize = Device.GetNamedSize(NamedSize.Large, winPrizeLabel);
 			}
 
 			StackLayout form = MakeForm();

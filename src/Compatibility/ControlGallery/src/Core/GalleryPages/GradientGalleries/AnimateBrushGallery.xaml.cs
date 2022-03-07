@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Dispatching;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.GradientGalleries
 {
@@ -15,7 +16,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 
 			UpdateBrush();
 
-			Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+			Dispatcher.StartTimer(TimeSpan.FromSeconds(1), () =>
 			{
 				UpdateBrush();
 				return true;

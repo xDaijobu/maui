@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Graphics;
 
 #if UITEST
@@ -76,7 +77,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						await Task.Delay(20);
 						source.Clear();
 						await Task.Delay(2000);
-						await Device.InvokeOnMainThreadAsync(() => instructions.Text = "Success");
+						await Dispatcher.DispatchAsync(() => instructions.Text = "Success");
 					});
 
 				stackLayout.Children.Remove(instructions);

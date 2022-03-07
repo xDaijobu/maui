@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Dispatching;
 
 #if UITEST
 using NUnit.Framework;
@@ -70,7 +71,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 		void AddSourceAfterDelay()
 		{
-			Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+			Dispatcher.StartTimer(TimeSpan.FromSeconds(2), () =>
 			{
 				_image.Source = "cover1.jpg";
 				return false;

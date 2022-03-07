@@ -3,6 +3,7 @@ using Android.Content;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery.Android.Tests;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery.Tests;
+using Microsoft.Maui.Dispatching;
 
 [assembly: Dependency(typeof(TestingPlatformService))]
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Android.Tests
@@ -11,7 +12,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Android.Tests
 	{
 		public async Task CreateRenderer(VisualElement visualElement)
 		{
-			await Device.InvokeOnMainThreadAsync(() =>
+			await visualElement.Dispatcher.DispatchAsync(() =>
 				Platform.Android.Platform.CreateRendererWithContext(visualElement,
 					DependencyService.Resolve<Context>()));
 

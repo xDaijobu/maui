@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -25,7 +26,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				{
 					Text = "Framous!"
 				},
-				BackgroundColor = new[] { Device.Android, Device.UWP }.Contains(Device.RuntimePlatform) ? new Color(0) : new Color(1),
+				BackgroundColor = new[] { DevicePlatform.Android, DevicePlatform.WinUI }.Contains(DeviceInfo.Platform) ? new Color(0) : new Color(1),
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 

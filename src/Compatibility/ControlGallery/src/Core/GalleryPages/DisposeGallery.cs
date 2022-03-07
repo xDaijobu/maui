@@ -37,13 +37,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			disposePage.RendererDisposed += (sender, args) =>
 			{
 				disposedPageLabel.Text = "Page renderer disposed";
+
 				// give some time for this to propogate
-				Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+				Dispatcher.DispatchDelayed(TimeSpan.FromSeconds(1), () =>
 				{
 					disposedLabelsLabel.Text = "Number of disposed labels: " + disposePage.DisposedLabelCount;
-					return false;
 				});
-
 			};
 
 			Content = new StackLayout

@@ -45,7 +45,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			datePickerButton.Clicked += (s, a) =>
 			{
-				Device.BeginInvokeOnMainThread(() =>
+				Dispatcher.Dispatch(() =>
 				{
 					if (datePicker.IsFocused)
 						datePicker.Unfocus();
@@ -68,7 +68,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			timePickerButton.Clicked += (s, a) =>
 			{
-				Device.BeginInvokeOnMainThread(() =>
+				Dispatcher.Dispatch(() =>
 				{
 					if (timePicker.IsFocused)
 						timePicker.Unfocus();
@@ -92,7 +92,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			pickerButton.Clicked += (s, a) =>
 			{
-				Device.BeginInvokeOnMainThread(() =>
+				Dispatcher.Dispatch(() =>
 				{
 					if (picker.IsFocused)
 						picker.Unfocus();

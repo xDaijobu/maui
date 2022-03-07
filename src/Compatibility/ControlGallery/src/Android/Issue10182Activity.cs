@@ -36,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Android
 
 			_activity1 = (Activity1)DependencyService.Resolve<Context>();
 
-			Device.BeginInvokeOnMainThread(async () =>
+			_activity1.RunOnUiThread(async () =>
 			{
 				try
 				{

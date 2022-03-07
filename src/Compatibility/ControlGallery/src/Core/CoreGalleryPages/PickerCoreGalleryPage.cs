@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls.CustomAttributes;
+using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -50,18 +51,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var fontFamilyContainer = new ViewContainer<Picker>(Test.Picker.FontFamily,
 				new Picker());
 			// Set font family based on available fonts per platform
-			switch (Device.RuntimePlatform)
-			{
-				case Device.Android:
-					fontFamilyContainer.View.FontFamily = "sans-serif-thin";
-					break;
-				case Device.iOS:
-					fontFamilyContainer.View.FontFamily = "Courier";
-					break;
-				default:
-					fontFamilyContainer.View.FontFamily = "Garamond";
-					break;
-			}
+			if (DeviceInfo.Platform == DevicePlatform.Android)
+				fontFamilyContainer.View.FontFamily = "sans-serif-thin";
+			else if (DeviceInfo.Platform == DevicePlatform.iOS)
+				fontFamilyContainer.View.FontFamily = "Courier";
+			else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+				fontFamilyContainer.View.FontFamily = "Comic Sans MS";
+			else
+				fontFamilyContainer.View.FontFamily = "Garamond";
 			fontFamilyContainer.View.Items.Add("Item 1");
 			fontFamilyContainer.View.Items.Add("Item 2");
 			fontFamilyContainer.View.Items.Add("Item 3");

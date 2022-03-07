@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Maui.Controls.CustomAttributes;
+using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -31,21 +32,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var fontFamilyContainer = new ViewContainer<DatePicker>(Test.DatePicker.FontFamily,
 				new DatePicker());
 			// Set font family based on available fonts per platform
-			switch (Device.RuntimePlatform)
-			{
-				case Device.Android:
-					fontFamilyContainer.View.FontFamily = "sans-serif-thin";
-					break;
-				case Device.iOS:
-					fontFamilyContainer.View.FontFamily = "Courier";
-					break;
-				case Device.WPF:
-					fontFamilyContainer.View.FontFamily = "Comic Sans MS";
-					break;
-				default:
-					fontFamilyContainer.View.FontFamily = "Garamond";
-					break;
-			}
+			if (DeviceInfo.Platform == DevicePlatform.Android)
+				fontFamilyContainer.View.FontFamily = "sans-serif-thin";
+			else if (DeviceInfo.Platform == DevicePlatform.iOS)
+				fontFamilyContainer.View.FontFamily = "Courier";
+			else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+				fontFamilyContainer.View.FontFamily = "Comic Sans MS";
+			else
+				fontFamilyContainer.View.FontFamily = "Garamond";
 
 			var fontSizeContainer = new ViewContainer<DatePicker>(Test.DatePicker.FontSize,
 				new DatePicker { FontSize = 32 });

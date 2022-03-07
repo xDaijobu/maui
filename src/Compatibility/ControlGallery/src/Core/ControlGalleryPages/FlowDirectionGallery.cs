@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.Maui.Essentials;
+using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -7,7 +9,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 	public class FlowDirectionGalleryLandingPage : ContentPage
 	{
-		FlowDirection DeviceDirection => Device.FlowDirection;
+		FlowDirection DeviceDirection => AppInfo.RequestedLayoutDirection.ToFlowDirection();
 
 		public FlowDirectionGalleryLandingPage()
 		{
@@ -105,7 +107,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 	public class FlowDirectionGalleryCP : ContentPage
 	{
-		FlowDirection DeviceDirection => Device.FlowDirection;
+		FlowDirection DeviceDirection => AppInfo.RequestedLayoutDirection.ToFlowDirection();
 
 		Page ParentPage => (Parent as Page) ?? this;
 
@@ -316,7 +318,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var prog = AddView<ProgressBar>(grid, ref col, ref row, 2);
 			prog.WidthRequest = 200;
 			prog.BackgroundColor = Colors.DarkGray;
-			Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+			Dispatcher.StartTimer(TimeSpan.FromSeconds(1), () =>
 			{
 				prog.Progress += .1;
 				if (prog.Progress == 1d)

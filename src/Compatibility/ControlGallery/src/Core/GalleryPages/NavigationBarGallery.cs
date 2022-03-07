@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.AppCompat;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Graphics;
 using static Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.AppCompat.NavigationPage;
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -235,24 +236,21 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				parent.BarTextColor = Colors.Orange;
 				NavigationPage.SetBackButtonTitle(parent, "");
 
-				switch (Device.RuntimePlatform)
+				if (DeviceInfo.Platform == DevicePlatform.iOS)
 				{
-					case Device.iOS:
+					button = new Button();
 
-						button = new Button();
-
-						button.Clicked += (s, e) =>
-						{
-							ToggleContent(parent);
-						};
-
+					button.Clicked += (s, e) =>
+					{
 						ToggleContent(parent);
-						break;
+					};
 
-					default:
-						NavigationPage.SetTitleView(this, search);
-						Content = list;
-						break;
+					ToggleContent(parent);
+				}
+				else
+				{
+					NavigationPage.SetTitleView(this, search);
+					Content = list;
 				}
 			}
 

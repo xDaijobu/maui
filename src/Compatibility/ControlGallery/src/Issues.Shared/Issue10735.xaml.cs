@@ -58,7 +58,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				while (true)
 				{
 					await Task.Delay(_changeFocusDelay);
-					Device.BeginInvokeOnMainThread(() =>
+					Dispatcher.Dispatch(() =>
 					{
 						_lastFocus?.Unfocus();
 

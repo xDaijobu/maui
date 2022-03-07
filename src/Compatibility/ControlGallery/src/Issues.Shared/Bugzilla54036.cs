@@ -48,8 +48,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			IsPresented = true;
 
-			Device.StartTimer(TimeSpan.FromMilliseconds(500), () => { IsPresented = false; return false; });
-			Device.StartTimer(TimeSpan.FromMilliseconds(1000), () => { IsPresented = true; return false; });
+			Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds(500), () => IsPresented = false);
+			Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds(1000), () => IsPresented = true);
 		}
 	}
 }

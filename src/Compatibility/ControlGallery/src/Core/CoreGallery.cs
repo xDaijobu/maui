@@ -133,21 +133,16 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			AutomationId = "TabbedPageRoot";
 
-
-			Device.StartTimer(TimeSpan.FromSeconds(6), () =>
+			Dispatcher.DispatchDelayed(TimeSpan.FromSeconds(6), () =>
 			{
 				BarBackgroundColor = Colors.Maroon;
 				BarTextColor = Colors.Yellow;
 
-				Device.StartTimer(TimeSpan.FromSeconds(6), () =>
+				Dispatcher.DispatchDelayed(TimeSpan.FromSeconds(6), () =>
 				{
 					BarBackgroundColor = null;
 					BarTextColor = null;
-
-					return false;
 				});
-
-				return false;
 			});
 
 			Children.Add(new CoreRootPage(this, NavigationBehavior.PushModalAsync) { Title = "Tab 1" });

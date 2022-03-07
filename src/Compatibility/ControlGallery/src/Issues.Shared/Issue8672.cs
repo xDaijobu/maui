@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Graphics;
 
 #if UITEST
@@ -41,7 +42,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			layout.Children.Add(collectionView);
 
 			Content = layout;
-			BindingContext = new Issue8672ViewModel();
+			BindingContext = new Issue8672ViewModel(Dispatcher);
 		}
 
 		DataTemplate CreateDataTemplate()
@@ -74,11 +75,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 	public class Issue8672ViewModel
 	{
-		public Issue8672ViewModel()
+		public Issue8672ViewModel(IDispatcher dispatcher)
 		{
 			Task.Run(() =>
 			{
-				Device.BeginInvokeOnMainThread(() =>
+				dispatcher.Dispatch(() =>
 				{
 					for (int i = 0; i < 10; i++)
 					{

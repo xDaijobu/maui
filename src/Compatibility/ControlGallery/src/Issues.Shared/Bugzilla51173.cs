@@ -121,7 +121,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var errorMessage = new Label();
 
 			Log.Listeners.Add(
-				new DelegateLogListener((c, m) => Device.BeginInvokeOnMainThread(() =>
+				new DelegateLogListener((c, m) => Dispatcher.Dispatch(() =>
 				{
 					_results.Text = ErrorLogged;
 					errorMessage.Text = m;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Controls.Essentials;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -46,20 +47,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		static string DefaultFontFamily()
 		{
 			var fontFamily = "";
-			switch (Device.RuntimePlatform)
-			{
-				case Device.iOS:
-					fontFamily = "Ionicons";
-					break;
-				case Device.WinUI:
-					fontFamily = "Assets/Fonts/ionicons.ttf#ionicons";
-					break;
-				case Device.Android:
-				default:
-					fontFamily = "fonts/ionicons.ttf#";
-					break;
-			}
-
+			if (DeviceInfo.Platform == DevicePlatform.iOS)
+				fontFamily = "Ionicons";
+			else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+				fontFamily = "Assets/Fonts/ionicons.ttf#ionicons";
+			else
+				fontFamily = "fonts/ionicons.ttf#";
 			return fontFamily;
 		}
 

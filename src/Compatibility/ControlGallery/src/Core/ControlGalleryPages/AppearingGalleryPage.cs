@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Dispatching;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -136,10 +137,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			{
 				base.OnAppearing();
 
-				Device.StartTimer(TimeSpan.FromMilliseconds(750), () =>
+				Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds(750), () =>
 				{
 					_listMessages.ItemsSource = App.AppearingMessages;
-					return false;
 				});
 			}
 		}

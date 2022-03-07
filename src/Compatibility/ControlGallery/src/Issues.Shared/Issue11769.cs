@@ -68,7 +68,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		protected override void Init()
 		{
 			Items.Add(new FlyoutItem());
-			Device.InvokeOnMainThreadAsync(() =>
+			Dispatcher.Dispatch(() =>
 			{
 				var tab = new Tab()
 				{
@@ -108,7 +108,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		protected override void Init()
 		{
-			Device.InvokeOnMainThreadAsync(() =>
+			Dispatcher.Dispatch(() =>
 			{
 				var page = AddBottomTab("Flyout Item");
 				page.Content = new Label()

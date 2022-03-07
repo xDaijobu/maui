@@ -123,12 +123,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					if (e.FontSize == fontSizeInitial)
 					{
 						e.FontSize = 40;
-						Device.BeginInvokeOnMainThread(() => buttonChangeFont.Text = btnChangeFontToDefault);
+						Dispatcher.Dispatch(() => buttonChangeFont.Text = btnChangeFontToDefault);
 					}
 					else
 					{
 						e.FontSize = fontSizeInitial;
-						Device.BeginInvokeOnMainThread(() => buttonChangeFont.Text = btnChangeFontToLarger);
+						Dispatcher.Dispatch(() => buttonChangeFont.Text = btnChangeFontToLarger);
 					}
 				});
 			};
@@ -140,12 +140,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					if (String.IsNullOrWhiteSpace(e.Text))
 					{
 						e.Text = String.Join(" ", Enumerable.Range(0, 100).Select(x => "f").ToArray());
-						Device.BeginInvokeOnMainThread(() => buttonChangeText.Text = btnChangeToNoText);
+						Dispatcher.Dispatch(() => buttonChangeText.Text = btnChangeToNoText);
 					}
 					else
 					{
 						e.Text = String.Empty;
-						Device.BeginInvokeOnMainThread(() => buttonChangeText.Text = btnChangeToHasText);
+						Dispatcher.Dispatch(() => buttonChangeText.Text = btnChangeToHasText);
 					}
 				});
 			};

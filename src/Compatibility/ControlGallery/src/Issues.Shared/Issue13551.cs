@@ -94,15 +94,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Content = grid;
 
-			Device.StartTimer(TimeSpan.FromMilliseconds(300), () =>
+			Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds(300), () =>
 			{
-				Device.BeginInvokeOnMainThread(() =>
+				Dispatcher.Dispatch(() =>
 				{
 					Source1.Add(new Item { Text = Success1 });
 					Source2.Add(new Item { Text = Success2 });
 				});
-
-				return false;
 			});
 		}
 

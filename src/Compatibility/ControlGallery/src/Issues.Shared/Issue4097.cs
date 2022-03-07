@@ -96,10 +96,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 							}
 							catch
 							{
-								Device.BeginInvokeOnMainThread(() => infoLabel.Text = $"GOT EXCEPTION! FATAL");
+								Dispatcher.Dispatch(() => infoLabel.Text = $"GOT EXCEPTION! FATAL");
 								return;
 							}
-							Device.BeginInvokeOnMainThread(() => infoLabel.Text = $"TASKS QUANTITY {tasks.Length}\nSUCCESS {tasks.Count(x => !x.IsFaulted)}\nFAILED {tasks.Count(x => x.IsFaulted)}");
+							Dispatcher.Dispatch(() => infoLabel.Text = $"TASKS QUANTITY {tasks.Length}\nSUCCESS {tasks.Count(x => !x.IsFaulted)}\nFAILED {tasks.Count(x => x.IsFaulted)}");
 						})
 					}
 				}

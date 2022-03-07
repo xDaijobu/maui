@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -52,19 +53,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 					Getter = () =>
 					{
 						var fontFamily = "";
-						switch (Device.RuntimePlatform)
-						{
-							case Device.iOS:
-								fontFamily = "Ionicons";
-								break;
-							case Device.WinUI:
-								fontFamily = "Assets/Fonts/ionicons.ttf#ionicons";
-								break;
-							case Device.Android:
-							default:
-								fontFamily = "fonts/ionicons.ttf#";
-								break;
-						}
+						if (DeviceInfo.Platform == DevicePlatform.iOS)
+							fontFamily = "Ionicons";
+						else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+							fontFamily = "Assets/Fonts/ionicons.ttf#ionicons";
+						else
+							fontFamily = "fonts/ionicons.ttf#";
 						return new FontImageSource
 						{
 							Color = Colors.Black,
