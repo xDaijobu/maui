@@ -37,7 +37,7 @@ namespace Microsoft.Maui.Controls
 		}
 
 		internal Application(bool setCurrentApplication)
-		{
+		{			
 			if (setCurrentApplication)
 				SetCurrentApplication(this);
 
