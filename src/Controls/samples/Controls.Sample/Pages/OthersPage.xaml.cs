@@ -13,30 +13,29 @@ namespace Maui.Controls.Sample.Pages
 
 		void TestAddOverlayWindow(object sender, EventArgs e)
 		{
-			var window = GetParentWindow();
-			overlay ??= new TestWindowOverlay(window);
-			window.AddOverlay(overlay);
+			overlay ??= new TestWindowOverlay(Window);
+			Window.AddOverlay(overlay);
 		}
 
 		void TestRemoveOverlayWindow(object sender, EventArgs e)
 		{
 			if (overlay is not null)
 			{
-				GetParentWindow().RemoveOverlay(overlay);
+				Window.RemoveOverlay(overlay);
 				overlay = null;
 			}
 		}
 
 		void TestVisualTreeHelper(object sender, EventArgs e)
 		{
-			var overlay = GetParentWindow().VisualDiagnosticsOverlay;
+			var overlay = Window.VisualDiagnosticsOverlay;
 			overlay.RemoveAdorners();
 			overlay.AddAdorner(TestButton, false);
 		}
 
 		void EnableElementPicker(object sender, EventArgs e)
 		{
-			GetParentWindow().VisualDiagnosticsOverlay.EnableElementSelector = true;
+			Window.VisualDiagnosticsOverlay.EnableElementSelector = true;
 		}
 	}
 }
